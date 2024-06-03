@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CancerData</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Breast Cancer</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="text" id="bmi" name="bmi">
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose:</label>
+                <input type="text" id="glucose" name="glucose">
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin:</label>
+                <input type="text" id="insulin" name="insulin">
+            </div>
+            <div class="form-group">
+                <label for="homa">HOMA:</label>
+                <input type="text" id="homa" name="homa">
+            </div>
+            <div class="form-group">
+                <label for="leptin">Leptin:</label>
+                <input type="text" id="leptin" name="leptin">
+            </div>
+            <div class="form-group">
+                <label for="adiponectin">Adiponectin:</label>
+                <input type="text" id="adiponectin" name="adiponectin">
+            </div>
+            <div class="form-group">
+                <label for="resistin">Resistin:</label>
+                <input type="text" id="resistin" name="resistin">
+6            </div>
+            <div class="form-group">
+                <label for="mcp1">MCP.1:</label>
+                <input type="text" id="mcp1" name="mcp1">
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <!-- JavaScript to log prediction result to the console -->
+    <script>
+        // Function to log prediction result to the console
+        function logPrediction() {
+            var predictionResult = "{{ prediction_text }}";
+            console.log(predictionResult);
+        }
+        
+        // Call the function when the page loads
+        window.onload = logPrediction;
+    </script>
+</body>
+</html>

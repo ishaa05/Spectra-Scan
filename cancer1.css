@@ -1,0 +1,20 @@
+.navbar-brand{
+    font-weight: 500;
+    
+}
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+      url(https://www.apollospectra.com/backend/web/blog-images/1660366334Breast%20cancer%20diagnosis_%20First%20steps%20and%20treatment.jpg);
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+.btn1{
+   
+}
+.btn2{
+
+}

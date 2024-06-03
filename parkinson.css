@@ -1,0 +1,20 @@
+.navbar-brand{
+    font-weight: 500;
+    
+}
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+      url(https://www.advancedsciencenews.com/wp-content/uploads/2021/03/12011663.jpg);
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+.btn1{
+    background-color: brown;
+}
+.btn2{
+
+}

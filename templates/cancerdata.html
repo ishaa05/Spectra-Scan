@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CancerData</title>
+    <link rel="stylesheet" href="../static/bcancer.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Breast Cancer</h2>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="text" id="bmi" name="bmi">
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose:</label>
+                <input type="text" id="glucose" name="glucose">
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin:</label>
+                <input type="text" id="insulin" name="insulin">
+            </div>
+            <div class="form-group">
+                <label for="homa">HOMA:</label>
+                <input type="text" id="homa" name="homa">
+            </div>
+            <div class="form-group">
+                <label for="leptin">Leptin:</label>
+                <input type="text" id="leptin" name="leptin">
+            </div>
+            <div class="form-group">
+                <label for="adiponectin">Adiponectin:</label>
+                <input type="text" id="adiponectin" name="adiponectin">
+            </div>
+            <div class="form-group">
+                <label for="resistin">Resistin:</label>
+                <input type="text" id="resistin" name="resistin">
+            </div>
+            <div class="form-group">
+                <label for="mcp1">MCP.1:</label>
+                <input type="text" id="mcp1" name="mcp1">
+            </div>
+            <div  style="visibility: hidden" class="form-group">
+            </div>
+            <div class="btn">
+                <button class="button button1 submit" type="submit" class="">Predict</button>  
+                      </div>
+        </form>
+       
+        
+        <div id="prediction-result" style="color: green"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault();
+                var form_data = $(this).serialize();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    data: form_data,
+                    success: function(response) {
+                
+                        $('#prediction-result').text(response.prediction_text);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

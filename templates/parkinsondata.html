@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/park.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body >
+
+
+    
+    <div class="container">
+        <h2>Predict Parkinson's Disease</h2>
+        <form id="parkinson_form">
+            
+            <div class="one" >
+                <label>MDVP:Fo(Hz)</label>
+                <input type="text" name="MDVP_Fo_Hz">
+            </div>
+            <div class="one">
+                <label>MDVP:Fhi(Hz)</label>
+                <input type="text" name="MDVP_Fhi_Hz">
+            </div>
+            <div class="one">
+                <label>MDVP:Flo(Hz)</label>
+                <input type="text" name="MDVP_Flo_Hz">
+            </div>
+            <div class="one">
+                <label>MDVP:Jitter(%)</label>
+                <input type="text" name="MDVP_Jitter">
+            </div>
+            <div class="one">
+                <label>MDVP:Jitter(Abs)</label>
+                <input type="text" name="MDVP_Jitter_Abs">
+            </div>
+            <div class="one">
+                <label>MDVP:RAP</label>
+                <input type="text" name="MDVP_RAP">
+            </div>
+            <div class="one">
+                <label>MDVP:PPQ</label>
+                <input type="text" name="MDVP_PPQ">
+            </div>
+            <div class="one">
+                <label>Jitter:DDP</label>
+                <input type="text" name="Jitter_DDP">
+            </div>
+            <div class="one">
+                <label>MDVP:Shimmer</label>
+                <input type="text" name="MDVP_Shimmer">
+            </div>
+            <div class="one">
+                <label>MDVP:Shimmer(dB)</label>
+                <input type="text" name="MDVP_Shimmer_dB">
+            </div>
+            <div class="one">
+                <label>Shimmer:APQ3</label>
+                <input type="text" name="Shimmer_APQ3">
+            </div>
+            <div class="one">
+                <label>Shimmer:APQ5</label>
+                <input type="text" name="Shimmer_APQ5">
+            </div>
+            <div class="one">
+                <label>MDVP:APQ</label>
+                <input type="text" name="MDVP_APQ">
+            </div>
+            <div class="one">
+                <label>Shimmer:DDA</label>
+                <input type="text" name="Shimmer_DDA">
+            </div>
+            <div class="one">
+                <label>NHR</label>
+                <input type="text" name="NHR">
+            </div>
+            <div class="one">
+                <label>HNR</label>
+                <input type="text" name="HNR">
+            </div>
+            <div class="one">
+                <label>RPDE</label>
+                <input type="text" name="RPDE">
+            </div>
+            <div class="one">
+                <label>DFA</label>
+                <input type="text" name="DFA">
+            </div>
+            <div class="one">
+                <label>Spread1</label>
+                <input type="text" name="spread1">
+            </div>
+            <div class="one">
+                <label>Spread2</label>
+                <input type="text" name="spread2">
+            </div>
+            <div class="one">
+                <label>D2</label>
+                <input type="text" name="D2">
+            </div>
+            <div class="one">
+                <label>PPE</label>
+                <input type="text" name="PPE">
+            </div>
+
+            <div class="btn">
+                <button class="button button1 submit" type="submit" class="">Predict</button>  
+                      </div>
+        </form>
+        <div id="prediction_result" style="color: green"></div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#parkinson_form').submit(function(e) {
+                e.preventDefault(); // Prevent form submission
+
+                // Serialize form data
+                var formData = $(this).serialize();
+
+                // Send Ajax POST request to Flask route
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    data: formData,
+                    success: function(response) {
+                        // Update prediction result
+                        $('#prediction_result').text(response.prediction_text);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
